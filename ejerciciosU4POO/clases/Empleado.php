@@ -1,5 +1,5 @@
 <?php
-class Empleado{
+abstract class Empleado{
     public $nombre;
     public $apellidos;
     public $sueldo;
@@ -90,7 +90,13 @@ class Empleado{
         $this->telefonos = [];
     }
     public function toHtml():string{
-        $html = "<p>nombre: $this->nombre apellidos: $this->apellidos salario: </p>";
-        return $html;
+        $info = "<p>nombre: $this->nombre apellidos: $this->apellidos salario: $this->sueldo</p>";
+        $tel = "<ul>";
+        for($i = 0; $i < count($this->telefonos); $i++){
+            $tel = $tel."<li>".$this->telefonos[$i]."</li>";
+        }
+        $tel = $tel."</ul>";
+        return $info."<br>".$tel;
     }
+    public abstract function calcularSalario();
 }
