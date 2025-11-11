@@ -1,0 +1,7 @@
+cuando tansolo hace falta enlazar un archivo una vez se puede hacer con include __DIR__ . "/clases/Flor.php"; 
+cuando la clase se aplica a varias que luego se utilizan juntas como clases que se heredan y luego se usan en el index.php | require_once __DIR__ . "/Planta.php";
+el dir es para copiar la ruta de tu maquina
+siempre se pone "/" "archivo" para acceder a un archivo, aunque ese archivo este a tu mismo nivel /archivo
+para subir un directorio ../
+para moverte por tu direcorio de tu mismo nivel /
+es mejor incluir los includs de la clase padre en las hijas, antes que luego ponerlas en el index.
