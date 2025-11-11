@@ -33,7 +33,7 @@ abstract class Tarea{
         return $esUrgente;
     }
     public function diasRestantes(){
-        return new DateTime()->diff($this->fechaLimite)->d;
+        return (new DateTime())->diff($this->fechaLimite)->d;
     }
     public function __tostring(){
         return "Tarea: ".$this->nombre."\nDescripción: ".$this->descripcion.

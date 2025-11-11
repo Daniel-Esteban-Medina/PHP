@@ -1,5 +1,4 @@
 <?php
-include "TareaDoc.php";
 class Usuario{
     private $nombre;
     private $password;
@@ -14,7 +13,7 @@ class Usuario{
     }
 
     public function calcularEdad(){
-        return new DateTime()->diff($this->fechaNacimiento)->y;
+        return (new DateTime())->diff($this->fechaNacimiento)->y;
     }
 
     public function esAdulto(): bool {
