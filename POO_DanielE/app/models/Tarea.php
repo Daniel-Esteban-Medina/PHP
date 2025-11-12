@@ -38,7 +38,7 @@ abstract class Tarea{
     public function __tostring(){
         return "Tarea: ".$this->nombre."\nDescripción: ".$this->descripcion.
         "\nFecha inicio: ".$this->fechInicio->format("d/m/Y")." Fecha limite: ".$this->fechaLimite->format("d/m/Y").
-        "\nEstado: ".$this->estado." Prioridad: ".$this->prioridad;
+        "\nEstado: ".$this->estado->name." Prioridad: ".$this->prioridad->name;
     }
     // GETS AND SETS
     public function getNombre()

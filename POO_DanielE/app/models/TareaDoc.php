@@ -10,7 +10,7 @@ class TareaDoc extends Tarea{
         parent::__construct($nombre, $descripcion, $fechaLimite, $fechInicio, $prioridad, $estado);        
     }
     public function infoDoc() {
-        return "Terea de documentación '".$this->getNombre()."', tiene ".$this->numPaginas.
+        return "Tarea de documentación '".$this->getNombre()."', tiene ".$this->numPaginas.
         " paginas, tiene ".count( $this->bibliografia ).
         " referencías bibliograficas y la tarea de documentación esta"
         .($this->getDesactualizada() ? " desactualizada." : " al día.");
