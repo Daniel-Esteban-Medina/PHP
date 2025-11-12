@@ -18,7 +18,8 @@ class TareaScript extends Tarea{
         "y esta echa en el framework: ".$this->framework;
     }
     public function calcularPorcentajeErrores(){
-        return ($this->numLineas * $this->numErrores) / 100;
+        //floor redondea
+        return floor(($this->numErrores / $this->numLineas) * 100);
     }
     public function calcularComplejidad(){
         $complejidad = "";

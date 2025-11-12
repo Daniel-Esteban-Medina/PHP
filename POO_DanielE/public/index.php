@@ -21,18 +21,28 @@
             $ts1 = new TareaScript("java", 258, 15, "Hibernate",
             "Código tienda online", "ampliar el funcionamiento de la app", "29/01/2026", "14/10/2025", Prioridad::BAJA, Estado::EN_CURSO);
 
-            $tg1 = new TareaGrafica("photoshop", 14,["rajo","naranja","negro"], 900,
+            $tg1 = new TareaGrafica("photoshop", 14,["rajo","naranja","negro"], 5,
             "vista ferretería Pepe", "una pagina principal y otras administrativas", "11/05/2025", "01/01/2024", Prioridad::MEDIA, Estado::COMPLETADA);
 
             // CREACIÓN USUARIO
             $u1 = new Usuario("Jose", "1234", "29/05/2006", $td1);
 
-            // PRUEBAS
+            // PRUEBAS:
+            // MOSTRAR INFORMACIÓN
             echo "<span class='negSub'>TareaDoc 1 info:</span> ".$td1->infoDoc()."<br>".$td1->__tostring();
             echo "<br><br>";
             echo "<span class='negSub'>TareaScript 1 info:</span> ".$ts1->infoScript()."<br>".$ts1->__tostring();
             echo "<br><br>";
             echo "<span class='negSub'>TareaGrafica 1 info:</span> ".$tg1->infoDiseno()."<br>".$tg1->__tostring();
+
+            // CALCULOS
+            echo "<br><br>";
+            echo "Tarea ".$td1->getNombre().": calcular complejidad ".$td1->calcularComplejidad().", Calcular densidad bibliograica: ".$td1->calcularDensidadBibliografica()."%";
+            echo "<br>";
+            echo "Tarea ".$ts1->getNombre().": calcular complejidad ".$ts1->calcularComplejidad().", Calcular porcentaje de errores: ".$ts1->calcularPorcentajeErrores()."%";
+            echo "<br>";
+            echo "Tarea ".$tg1->getNombre().": calcular complejidad ".$tg1->calcularComplejidad().", Calcular la eficiencía de render: ".$tg1->calcularEficienciaRender()."%";
+            
 
             echo "<br><br>".($u1->esAdulto() ? "Sí, ".$u1->getNombre()." es adulto" : "No, ".$u1->getNombre()." no es adulto");
 

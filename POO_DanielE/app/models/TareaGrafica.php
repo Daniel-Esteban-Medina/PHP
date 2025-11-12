@@ -18,7 +18,7 @@ class TareaGrafica extends Tarea{
         ", el tiempo de renderizado es ".$this->tiempoRender." segundos";
     }
     public function calcularEficienciaRender(){
-        return ($this->numVistas * $this->tiempoRender) / 100;
+        return floor(($this->tiempoRender / $this->numVistas) * 100);
     }
     public function calcularComplejidad(){
         $complejidad = "";
@@ -70,5 +70,37 @@ class TareaGrafica extends Tarea{
     {
         $this->tiempoRender = $tiempoRender;
         return $this;
+    }
+    // MÉTODOS ARRAY
+    public function addInicioColor($ref){
+        array_unshift($this->coloresPrincipales, $ref);
+    }
+    public function addFinalColor($ref){
+        array_push($this->coloresPrincipales, $ref);
+    }
+    public function deletAllColor(){
+        array_splice($this->coloresPrincipales, 0, count($this->coloresPrincipales));
+    }
+    public function deletElementColor($element){
+        $indice = array_search($element, $this->coloresPrincipales);
+        array_splice($this->coloresPrincipales, $indice, 1);
+    }
+    public function buscarIndiceColor($element){
+        return array_search($element, $this->coloresPrincipales);
+    }
+    public function buscarElementoColor($indice){
+        return $this->coloresPrincipales[$indice];
+    }
+    public function buscarPorPrimeraLetraColor($letra){
+        $arr = [];
+        for($i = 0; $i < count($this->coloresPrincipales); $i++){
+            if($this->coloresPrincipales[$i][0] == $letra){
+                $arr[] = $this->coloresPrincipales[$i];
+            }
+        }
+        return $arr;
+    }
+    public function editElementColor($indice, $element){
+        $this->coloresPrincipales[$indice] = $element;
     }
 }
