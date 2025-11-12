@@ -59,4 +59,16 @@ class TareaDoc extends Tarea{
         $this->desactualizada = $desactualizada;
         return $this;
     }
+
+    // MÉTODOS ARRAY
+    public function addInicioBiblio($ref){
+        array_unshift($this->bibliografia, $ref);
+    }
+    public function addFinalBiblio($ref){
+        array_push($this->bibliografia, $ref);
+    }
+    public function deletAllBiblio($element){
+        $indice = array_search($element, $this->bibliografia);
+        array_splice($this->bibliografia, $indice, 1);
+    }
 }
