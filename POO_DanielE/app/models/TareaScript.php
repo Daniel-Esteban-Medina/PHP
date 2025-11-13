@@ -23,13 +23,33 @@ class TareaScript extends Tarea{
     }
     public function calcularComplejidad(){
         $complejidad = "";
-        if($this->diasRestantes() < 12 && $this->calcularPorcentajeErrores() > 15){
+        $valorDias = 0; $valorDensidad = 0; $valorCompleto = 0;
+        if($this->diasRestantes() < 12){
+            $valorDias = 10;
+        }
+        if($this->diasRestantes() < 6){
+            $valorDias = 20;
+        }
+        if($this->diasRestantes() < 3){
+            $valorDias = 30;
+        }
+        if($this->calcularPorcentajeErrores() > 15){
+            $valorDensidad = 10;
+        }
+        if($this->calcularPorcentajeErrores() > 55){
+            $valorDensidad = 20;
+        }
+        if($this->calcularPorcentajeErrores() > 80){
+            $valorDensidad = 30;
+        }
+        $valorCompleto = $valorDensidad + $valorDias;
+        if($valorCompleto < 21) {
             $complejidad = "baja";
         }
-        if($this->diasRestantes() < 6 && $this->calcularPorcentajeErrores() > 55){
+        if($valorCompleto >= 30 && $valorCompleto < 41) {
             $complejidad = "media";
         }
-        if($this->diasRestantes() < 3 && $this->calcularPorcentajeErrores() > 80){
+        if($valorCompleto >= 50) {
             $complejidad = "alta";
         }
         return $complejidad;

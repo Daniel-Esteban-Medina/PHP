@@ -61,7 +61,7 @@ class TareaDoc extends Tarea{
         $this->numPaginas = $numPaginas;
         return $this;
     }
-    public function getBibliografia()
+    public function getBibliografia():array
     {
         return $this->bibliografia;
     }
@@ -111,5 +111,8 @@ class TareaDoc extends Tarea{
     }
     public function editElementBiblio($indice, $element){
         $this->bibliografia[$indice] = $element;
+    }
+    public function BibliografiaToString(){
+        return implode(",", $this->bibliografia);
     }
 }

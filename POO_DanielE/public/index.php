@@ -29,6 +29,7 @@
 
             // PRUEBAS:
             // MOSTRAR INFORMACIÓN
+            echo "<h3>TAREAS MOSTRAR INFORMACIÓN</h3>";
             echo "<span class='negSub'>TareaDoc 1 info:</span> ".$td1->infoDoc()."<br>".$td1->__tostring();
             echo "<br><br>";
             echo "<span class='negSub'>TareaScript 1 info:</span> ".$ts1->infoScript()."<br>".$ts1->__tostring();
@@ -36,17 +37,31 @@
             echo "<span class='negSub'>TareaGrafica 1 info:</span> ".$tg1->infoDiseno()."<br>".$tg1->__tostring();
 
             // CALCULOS
-            echo "<br><br>";
-            echo "Tarea ".$td1->getNombre().": calcular complejidad ".$td1->calcularComplejidad().", Calcular densidad bibliograica: ".$td1->calcularDensidadBibliografica()."%";
+            echo "<br><br><h3>TAREAS CALCULOS</h3>";
+            echo "Tarea ".$td1->getNombre().": calcular complejidad ".$td1->calcularComplejidad().", Calcular densidad bibliografica: ".$td1->calcularDensidadBibliografica()."%";
             echo "<br>";
             echo "Tarea ".$ts1->getNombre().": calcular complejidad ".$ts1->calcularComplejidad().", Calcular porcentaje de errores: ".$ts1->calcularPorcentajeErrores()."%";
             echo "<br>";
             echo "Tarea ".$tg1->getNombre().": calcular complejidad ".$tg1->calcularComplejidad().", Calcular la eficiencía de render: ".$tg1->calcularEficienciaRender()."%";
             
 
-            echo "<br><br>".($u1->esAdulto() ? "Sí, ".$u1->getNombre()." es adulto" : "No, ".$u1->getNombre()." no es adulto");
+            
+            echo "<h3>USUARIO</h3>";
+            echo "INFO USER:".$u1->__tostring();
+            echo "<br>El usuario ".$u1->getNombre()." tiene ".$u1->calcularEdad()." años, por lo tanto ".($u1->esAdulto() ? "es un adulto." : "No, es un adulto.");
 
-            echo "<br>funcines generales: lista de la bibliografia de doc1".arrayListUnorder($td1->getBibliografia());
+
+            // ARRAYS
+            echo "<h3>Métodos array</h3>";
+            echo "Bibliografía: ".$td1->BibliografiaToString();
+            $td1->addFinalBiblio("El rincon del vago");
+            $td1->deletElementBiblio("wikipedia");
+            $td1->editElementBiblio(0,"RAE");
+            echo "<br>Bibliografía post cambios: ".$td1->BibliografiaToString();
+            echo "<br>funciones generales: listar bibliografia doc1".arrayListUnorder($td1->getBibliografia());
+
+            
+            
             echo "<br>metodo Estatico cantidad tareas ".Tarea::cantidadDeTareas();
         ?>
     </body>

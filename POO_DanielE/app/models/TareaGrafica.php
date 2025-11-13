@@ -22,18 +22,37 @@ class TareaGrafica extends Tarea{
     }
     public function calcularComplejidad(){
         $complejidad = "";
-        if($this->diasRestantes() < 12 && $this->calcularEficienciaRender() > 15){
+        $valorDias = 0; $valorDensidad = 0; $valorCompleto = 0;
+        if($this->diasRestantes() < 12){
+            $valorDias = 10;
+        }
+        if($this->diasRestantes() < 6){
+            $valorDias = 20;
+        }
+        if($this->diasRestantes() < 3){
+            $valorDias = 30;
+        }
+        if($this->calcularEficienciaRender() > 15){
+            $valorDensidad = 10;
+        }
+        if($this->calcularEficienciaRender() > 55){
+            $valorDensidad = 20;
+        }
+        if($this->calcularEficienciaRender() > 80){
+            $valorDensidad = 30;
+        }
+        $valorCompleto = $valorDensidad + $valorDias;
+        if($valorCompleto < 21) {
             $complejidad = "baja";
         }
-        if($this->diasRestantes() < 6 && $this->calcularEficienciaRender() > 55){
+        if($valorCompleto >= 30 && $valorCompleto < 41) {
             $complejidad = "media";
         }
-        if($this->diasRestantes() < 3 && $this->calcularEficienciaRender() > 80){
+        if($valorCompleto >= 50) {
             $complejidad = "alta";
         }
         return $complejidad;
     }
-
 // GETS AND SETS
     public function getHerramienta()
     {
@@ -102,5 +121,8 @@ class TareaGrafica extends Tarea{
     }
     public function editElementColor($indice, $element){
         $this->coloresPrincipales[$indice] = $element;
+    }
+    public function ColoresToString(){
+        return implode(",", $this->coloresPrincipales);
     }
 }
