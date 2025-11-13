@@ -56,7 +56,8 @@ abstract class Tarea{
      * @return int Número de días restantes.
      */
     public function diasRestantes(){
-        return (new DateTime())->diff($this->fechaLimite)->d;
+        $dias = (new DateTime())->diff($this->fechaLimite);
+        return $dias->days;
     }
     public function __tostring(){
         return "Tarea: ".$this->nombre."\nDescripción: ".$this->descripcion.

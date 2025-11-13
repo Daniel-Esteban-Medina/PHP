@@ -65,6 +65,8 @@
             echo "<br>Colores que empiezan por 'n' en colores pinipales".arrayListUnorder($tg1->buscarPorPrimeraLetraColor("n"));
             
             echo "<br>Método ESTATICO de la clase TAREA: cantidad de tareas ".Tarea::cantidadDeTareas();
+            echo "<br>Método es urgente, de tarea grafica1".($tg1->esUrgente() ? " Sí, es urgente.":" No es urgente.");
+            echo "<br>Método ver días restantes de tarea script ".$ts1->diasRestantes();
         ?>
     </body>
 <html>
