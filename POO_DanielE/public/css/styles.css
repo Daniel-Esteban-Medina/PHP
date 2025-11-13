@@ -7,3 +7,8 @@
     font-weight: bold; 
     text-decoration: underline;
 }
+#tituloPage{
+    background-color: rgb(112, 201, 207);
+    border-radius: 20px;
+    text-align: center;
+}

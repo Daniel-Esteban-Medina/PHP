@@ -12,15 +12,32 @@ class TareaScript extends Tarea{
         $this->framework = $framework;
         parent::__construct($nombre, $descripcion, $fechaLimite, $fechInicio, $prioridad, $estado);
     }
+    /**
+     * Devuelve una descripción completa del script, incluyendo el nombre, 
+     * lenguaje utilizado, cantidad de líneas, número de errores y framework asociado.
+     *
+     * @return string Descripción detallada de la tarea de script.
+     */
     public function infoScript(){
         return "Tarea de Script '".$this->getNombre()."', usa ".$this->lenguaje." como lenguaje, tiene una cantidad de lineas de ".
         $this->numLineas.", la cantidad de errores en ella es ".$this->numErrores.
         "y esta echa en el framework: ".$this->framework;
     }
+    /**
+     * Calcula el porcentaje de errores en el script con respecto al número total de líneas.
+     * El resultado se redondea hacia abajo usando floor().
+     *
+     * @return int Porcentaje de errores en el código del script.
+     */
     public function calcularPorcentajeErrores(){
-        //floor redondea
         return floor(($this->numErrores / $this->numLineas) * 100);
     }
+    /**
+     * Calcula la complejidad de la tarea de script en función del tiempo restante 
+     * y del porcentaje de errores en el código.
+     *
+     * @return string Nivel de complejidad de la tarea: "baja", "media" o "alta".
+     */
     public function calcularComplejidad(){
         $complejidad = "";
         $valorDias = 0; $valorDensidad = 0; $valorCompleto = 0;

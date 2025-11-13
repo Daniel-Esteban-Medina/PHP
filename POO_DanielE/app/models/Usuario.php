@@ -11,11 +11,19 @@ class Usuario{
         $this->fechaNacimiento = DateTime::createFromFormat("d/m/Y", $fechaNacimiento);
         $this->tareaActual = $tareaActual;
     }
-
+    /**
+     * Calcula la edad actual del usuario a partir de su fecha de nacimiento.
+     *
+     * @return int Edad del usuario en años.
+     */
     public function calcularEdad(){
         return (new DateTime())->diff($this->fechaNacimiento)->y;
     }
-
+    /**
+     * Determina si el usuario es mayor de edad (18 años o más).
+     *
+     * @return bool true si el usuario es adulto, false en caso contrario.
+     */
     public function esAdulto(): bool {
         $esAdulto = false;
         if($this->calcularEdad() > 17){

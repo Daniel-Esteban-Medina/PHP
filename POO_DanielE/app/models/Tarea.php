@@ -18,13 +18,31 @@ abstract class Tarea{
         $this->estado = $estado;
         static::$contTareas++;
     }
-    
+    /**
+     * Calcula la complejidad de la tarea.
+     * Este método debe ser implementado por las clases hijas.
+     *
+     * @return string Nivel de complejidad de la tarea.
+     */
     abstract public function calcularComplejidad();
-
+    /**
+     * Devuelve la cantidad total de tareas creadas.
+     *
+     * @return int Número total de instancias de tareas.
+     */
     static public function cantidadDeTareas() {
         return static::$contTareas;
     }
 
+    /**
+     * Determina si la tarea es urgente. 
+     * Se considera urgente si:
+     * - Tiene prioridad ALTA.
+     * - Está en estado PENDIENTE.
+     * - Faltan menos de 7 días para su fecha límite.
+     *
+     * @return bool true si la tarea es urgente, false en caso contrario.
+     */
     public function esUrgente(){
         $esUrgente = false;
         if($this->prioridad == Prioridad::ALTA && $this->estado == Estado::PENDIENTE && $this->diasRestantes() < 7){
@@ -32,6 +50,11 @@ abstract class Tarea{
         }
         return $esUrgente;
     }
+    /**
+     * Calcula la cantidad de días restantes hasta la fecha límite de la tarea.
+     *
+     * @return int Número de días restantes.
+     */
     public function diasRestantes(){
         return (new DateTime())->diff($this->fechaLimite)->d;
     }

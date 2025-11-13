@@ -9,15 +9,33 @@ class TareaDoc extends Tarea{
         $this->desactualizada = $desactualizada;
         parent::__construct($nombre, $descripcion, $fechaLimite, $fechInicio, $prioridad, $estado);        
     }
+    /**
+     * Devuelve una descripción completa sobre la documentación, 
+     * incluyendo el nombre, número de páginas, cantidad de referencias 
+     * y si está desactualizada o al día.
+     * 
+     * @return string Descripcíon de la parte referente a la documentación.
+     */
     public function infoDoc() {
         return "Tarea de documentación '".$this->getNombre()."', tiene ".$this->numPaginas.
         " paginas, tiene ".count( $this->bibliografia ).
         " referencías bibliograficas y la tarea de documentación esta"
         .($this->getDesactualizada() ? " desactualizada." : " al día.");
     }
+    /**
+     * Calcula la densidad bibliográfica de la tarea.
+     * La densidad se obtiene del número de referencias bibliográficas por cada 100 páginas.
+     *
+     * @return int Densidad bibliográfica redondeada hacia abajo.
+     */
     public function calcularDensidadBibliografica(){
         return floor((count($this->bibliografia) / $this->numPaginas) * 100);
     }
+    /**
+     * Calcula la complejidad de la tarea en función del tiempo restante y la densidad bibliográfica.
+     *
+     * @return string Nivel de complejidad: "baja", "media" o "alta".
+     */
     public function calcularComplejidad(){
         $complejidad = "";
         $valorDias = 0; $valorDensidad = 0; $valorCompleto = 0;
@@ -81,25 +99,66 @@ class TareaDoc extends Tarea{
     }
 
     // MÉTODOS ARRAY
+    /**
+     * Agrega una referencia bibliográfica al inicio del array.
+     *
+     * @param string $ref Referencia bibliográfica a agregar.
+     * @return void
+     */
     public function addInicioBiblio($ref){
         array_unshift($this->bibliografia, $ref);
     }
+    /**
+     * Agrega una referencia bibliográfica al final del array.
+     *
+     * @param string $ref Referencia bibliográfica a agregar.
+     * @return void
+     */
     public function addFinalBiblio($ref){
         array_push($this->bibliografia, $ref);
     }
+    /**
+     * Elimina todas las referencias bibliográficas del array.
+     *
+     * @return void
+     */
     public function deletAllBiblio(){
         array_splice($this->bibliografia, 0, count($this->bibliografia));
     }
+    /**
+     * Elimina una referencia bibliográfica específica.
+     *
+     * @param string $element Elemento a eliminar.
+     * @return void
+     */
     public function deletElementBiblio($element){
         $indice = array_search($element, $this->bibliografia);
         array_splice($this->bibliografia, $indice, 1);
     }
+    /**
+     * Busca el índice de una referencia bibliográfica.
+     *
+     * @param string $element Elemento a buscar.
+     * @return int|false Índice del elemento si se encuentra, o false si no existe.
+     */
     public function buscarIndiceBiblio($element){
         return array_search($element, $this->bibliografia);
     }
+    /**
+     * Devuelve el elemento bibliográfico correspondiente al índice especificado.
+     *
+     * @param int $indice Índice del elemento a recuperar.
+     * @return string Referencia bibliográfica.
+     */
     public function buscarElementoBiblio($indice){
         return $this->bibliografia[ $indice ];
     }
+    /**
+     * Busca referencias bibliográficas que comiencen por una letra determinada.
+     *
+     * @param string $letra Letra inicial a buscar.
+     * @return array Array de referencias que comienzan por la letra indicada.
+     */
     public function buscarPorPrimeraLetraBiblio($letra){
         $arr = [];
         for($i = 0; $i < count($this->bibliografia); $i++){
@@ -109,9 +168,21 @@ class TareaDoc extends Tarea{
         }
         return $arr;
     }
+    /**
+     * Edita una referencia bibliográfica en una posición específica.
+     *
+     * @param int $indice Índice del elemento a editar.
+     * @param string $element Nuevo valor de la referencia bibliográfica.
+     * @return void
+     */
     public function editElementBiblio($indice, $element){
         $this->bibliografia[$indice] = $element;
     }
+    /**
+     * Convierte el array de bibliografía en una cadena de texto separada por comas.
+     *
+     * @return string Texto con todas las referencias separadas por comas.
+     */
     public function BibliografiaToString(){
         return implode(",", $this->bibliografia);
     }

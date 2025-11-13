@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <h2>INDEX PRACTICA POO</h2>
+        <h2 id="tituloPage">INDEX PRACTICA POO</h2>
         <img src="../resources/assets/UML.png" id="UML">
         <?php
             // INCLUDES
@@ -21,7 +21,7 @@
             $ts1 = new TareaScript("java", 258, 15, "Hibernate",
             "Código tienda online", "ampliar el funcionamiento de la app", "29/01/2026", "14/10/2025", Prioridad::BAJA, Estado::EN_CURSO);
 
-            $tg1 = new TareaGrafica("photoshop", 14,["rajo","naranja","negro"], 5,
+            $tg1 = new TareaGrafica("photoshop", 14,["rojo","naranja","negro"], 5,
             "vista ferretería Pepe", "una pagina principal y otras administrativas", "11/05/2025", "01/01/2024", Prioridad::MEDIA, Estado::COMPLETADA);
 
             // CREACIÓN USUARIO
@@ -60,9 +60,11 @@
             echo "<br>Bibliografía post cambios: ".$td1->BibliografiaToString();
             echo "<br>funciones generales: listar bibliografia doc1".arrayListUnorder($td1->getBibliografia());
 
+            $tg1->addInicioColor("amarillo");
+            echo "<br>Colores principales de tg1: ".$tg1->ColoresToString();
+            echo "<br>Colores que empiezan por 'n' en colores pinipales".arrayListUnorder($tg1->buscarPorPrimeraLetraColor("n"));
             
-            
-            echo "<br>metodo Estatico cantidad tareas ".Tarea::cantidadDeTareas();
+            echo "<br>Método ESTATICO de la clase TAREA: cantidad de tareas ".Tarea::cantidadDeTareas();
         ?>
     </body>
 <html>
