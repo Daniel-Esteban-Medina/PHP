@@ -5,3 +5,21 @@ siempre se pone "/" "archivo" para acceder a un archivo, aunque ese archivo este
 para subir un directorio ../
 para moverte por tu direcorio de tu mismo nivel /
 es mejor incluir los includs de la clase padre en las hijas, antes que luego ponerlas en el index.
+
+
+Abstracción:
+Nos enfocamos en qué hace un objeto, no en cómo lo hace. Oculta detalles internos que no necesitamos conocer, igual que usamos una radio sin saber cómo funciona por dentro.
+
+Encapsulación:
+Cada objeto guarda sus datos y su funcionamiento de forma privada. Otros solo pueden usar lo que el objeto permite mediante métodos públicos. Esto protege la información y evita errores.
+
+Herencia:
+Permite crear nuevas clases basadas en otras, reutilizando código y manteniendo una organización clara.
+
+Polimorfismo:
+Un mismo método u objeto puede comportarse de distintas formas según el contexto, evitando repetir código.
+
+
+- private: sólo se puede acceder dentro de la propia clase.
+- protected: se accede en la propia clase y en las que heredan de ella.
+- public: se puede acceder desde cualquier parte.
