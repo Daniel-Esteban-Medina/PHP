@@ -21,6 +21,17 @@
                 <option value="ASIR">redes</option>
             </select>
             <br>
+            <label>Género:</label>
+
+            <input type="radio" name="rango" id="mujer" value="Mujer">
+            <label for="mujer">Mujer</label>
+
+            <input type="radio" name="rango" id="hombre" value="Hombre">
+            <label for="hombre">Hombre</label>
+
+            <input type="radio" name="rango" id="otro" value="Otro">
+            <label for="otro">Otro</label>
+            <br>
             <input type="submit" value="enviar">
         </form>
     </body>
