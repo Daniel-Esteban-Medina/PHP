@@ -14,13 +14,9 @@
             session_start();
             //Introducir seguridad
             function secure($text){
-                //Quitar espacios en blanco
-                $text = trim($text);
-                //Quita las ' / '
-                $text = stripslashes($text);
-                //Quita las cadenas html
-                $text = htmlspecialchars($text);
-                return $text;
+                $text = trim($text);          // 1. Quita espacios al inicio y final
+                $text = strip_tags($text);    // 2. Elimina TODAS las etiquetas HTML
+                return $text;                         // 3. Devuelve solo texto normal
             }
             $errores = false;
             $passError = "";
