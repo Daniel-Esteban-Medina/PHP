@@ -14,6 +14,7 @@
     </head>
     <body>
         <?php
+        session_start();
             $errores = false;
             $tipoError = "";
             $glutenError = "";
@@ -38,8 +39,20 @@
                 $glutenError = "Tienes que marcar si con gluten o no.";
             }
 
+
+            if(isset($_POST["cookie"])){
+                setcookie("Receta", "valor de la cookie", Time()+(14*24*60*60));
+            }
             if($errores == false){
-                header("Location: ../paginaRegistroCompletado.php");
+                $_SESSION["nombre"] = $nombre;
+                $_SESSION["receta"] = $receta;
+                $_SESSION["tiempo"] = $tiempo;
+                $_SESSION["gmail"] = $gmail;
+                $_SESSION["tipo"] = $tipo;
+                $_SESSION["gluten"] = $gluten;
+                $_SESSION["color"] = $color;
+                header("Location: index.php");
+                exit();
             }
             }  
         ?>
@@ -85,7 +98,9 @@
             <label for="color">Color:</label>
             <input type="color" name="color" id="color">
             <br>
-            <input type="submit" value="enviar">
+            <input type="submit" value="enviar"><br>
+            <input type="checkbox" name="cookie" id="cookie">
+            <label for="cookie">Quiero que me hagas una cookie</label>
         </form>
     </body>
 </html>
