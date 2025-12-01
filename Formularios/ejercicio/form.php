@@ -11,6 +11,7 @@
                 font-size: 0.5em;
             }
         </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <?php
@@ -102,5 +103,6 @@
             <input type="checkbox" name="cookie" id="cookie">
             <label for="cookie">Quiero que me hagas una cookie</label>
         </form>
+        <?php include __DIR__ . "/footer.php";?>
     </body>
 </html>
