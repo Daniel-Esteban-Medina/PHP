@@ -16,7 +16,7 @@
     >
 
     <label for="fecha">FECHA DE NACIMIENTO: </label>
-    <input type="date" name="fecha" id="fecha">
+    <input type="date" name="fecha" id="fecha" required>
     <br>
     <input type="submit" value="Enviar">
 </form>

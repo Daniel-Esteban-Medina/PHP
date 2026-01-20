@@ -12,3 +12,8 @@
     border-radius: 20px;
     text-align: center;
 }
+.cuadroError{
+    border: solid rgb(255, 46, 46) 1px;
+    background-color: rgb(250, 112, 112);
+    border-radius: 3px;
+}
