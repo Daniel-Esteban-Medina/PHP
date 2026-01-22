@@ -32,3 +32,11 @@ function fechaSpain($fecha){
     list($year, $month, $day) = explode("-", $fecha);
     return $day."/".$month."/".$year;
 }
+
+function stringToArray($texto){
+    $arr = explode(",", $texto);
+    for($i = 0; $i < count($arr); $i++){
+        $arr[$i] = trim($arr[$i]);
+    }
+    return $arr;
+}
