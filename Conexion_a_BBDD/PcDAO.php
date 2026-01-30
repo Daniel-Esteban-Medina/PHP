@@ -25,7 +25,7 @@ class PcDAO{
         return null;
     }
     private static function readAll(){
-
+        return null;
     }
 
 }
